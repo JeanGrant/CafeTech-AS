@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/AppTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:contentDescription="@string/app_name"
+        android:fontFamily="@font/aguafina_script"
+        android:text="@string/app_name"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/AppLogo" />
+
+    <TextView
+        android:id="@+id/AppSubtitle"
+        android:layout_width="217dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:contentDescription="@string/app_name"
+        android:fontFamily="@font/fira_sans"
+        android:text="@string/app_subtitle"
+        android:textAlignment="center"
+        android:textColor="@color/brown_cafetech"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/AppTitle" />
+
+    <TextView
+        android:id="@+id/AppDescription"
+        android:layout_width="354dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:contentDescription="@string/app_name"
+        android:fontFamily="@font/questrial"
+        android:text="@string/app_description"
+        android:textAlignment="center"
+        android:textColor="@color/green_cafetech"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/AppSubtitle" />
+
+    <ImageView
+        android:id="@+id/AppLogo"
+        android:layout_width="125dp"
+        android:layout_height="125dp"
+        android:layout_marginTop="76dp"
+        android:contentDescription="@string/app_icon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/ic_app_logo_alt" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/camerabutt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:backgroundTint="@color/brown_cafetech"
+        android:clickable="true"
+        android:contentDescription="@string/float_camera"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/ic_icons_01" />
+
+    <ListView
+        android:id="@+id/listtest"
+        android:layout_width="357dp"
+        android:layout_height="101dp"
+        app:layout_constraintBottom_toTopOf="@+id/camerabutt"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/AppDescription" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

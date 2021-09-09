@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">CafeTech</string>
+    <string name="app_subtitle">Automated Arabica Coffee Leaf Disease Recognition System</string>
+    <string name="app_description">CafeTech is a detection system designed to help Arabica coffee growers to automatically identify diseases on their crops.\n\n This system uses Artificial Intelligence (AI) in identifying diseases on a taken image of an Arabica Coffee Leaf. The mobile application then displays basic information and recommendation for control and management of the identified disease.</string>
+    <string name="app_icon">CafeTech Logo</string>
+    <string name="float_camera">Camera Icon</string>
+    <string name="float_home">Home Icon</string>
+    <string name="title_results">Results</string>
+    <string name="diagnosis_prompt">Diagnosis: </string>
+    <string name="diagnosis_output">Healthy</string>
+    <string name="system_input">input image</string>
+    <string name="description_result">Ang Coffee Leaf Miner ay isang cosmopolitan na peste.</string>
+</resources>
