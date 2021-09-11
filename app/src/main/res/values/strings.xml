@@ -1,13 +1,29 @@
 <resources>
-    <string name="app_name">CafeTech</string>
+    <string name="app_name" translatable="false">CafeTech</string>
     <string name="app_subtitle">Automated Arabica Coffee Leaf Disease Recognition System</string>
-    <string name="app_description">CafeTech is a detection system designed to help Arabica coffee growers to automatically identify diseases on their crops.\n\n This system uses Artificial Intelligence (AI) in identifying diseases on a taken image of an Arabica Coffee Leaf. The mobile application then displays basic information and recommendation for control and management of the identified disease.</string>
-    <string name="app_icon">CafeTech Logo</string>
-    <string name="float_camera">Camera Icon</string>
-    <string name="float_home">Home Icon</string>
+    <string name="app_description">CafeTech is a detection system designed to help Arabica coffee growers automatically identify diseases on their crops.\n\nThis system uses Artificial Intelligence (AI) in identifying diseases on a taken image of an Arabica Coffee Leaf. The mobile application then displays basic information and recommendation for control and management of the identified disease.</string>
+    <string name="app_icon" translatable="false">CafeTech Logo</string>
+    <string name="float_camera" translatable="false">Camera Icon</string>
+    <string name="float_home" translatable="false">Home Icon</string>
     <string name="title_results">Results</string>
     <string name="diagnosis_prompt">Diagnosis: </string>
-    <string name="diagnosis_output">Healthy</string>
+    <string name="diagnosis_prompt_alt" translatable="false">Diagnosis: </string>
+    <string name="diagnosis_output">Name</string>
     <string name="system_input">input image</string>
-    <string name="description_result">Ang Coffee Leaf Miner ay isang cosmopolitan na peste.</string>
+    <string name="basic_info_prompt">Cause:</string>
+    <string name="basic_info_prompt_alt">Hey there green thumb farmer!</string>
+    <string name="basic_info_desc">Basic Information</string>
+    <string name="control_prompt">Possible Solutions:</string>
+    <string name="control_prompt_alt">Considerations for maintenance: </string>
+    <string name="control_desc">List of Solutions</string>
+    <string name="basinf_healthy">Keep it going! Your Arabica crop shows no signs of infestation.</string>
+    <string name="basinf_miner">Caused by pests called \'PeriLeucoptera coffeella\'.\n\nIt is recognizable on the upper surface of the infested leaf by the large, irregular brown spots. Interacting with the spot exposes the small white caterpillars under the upper epidermis of the leaf.\n\nThe total life cycle of the pests depends on temperature, relative humidity, and rainfall. Attacks are usually stronger during the dry season than in wet periods.</string>
+    <string name="basinf_rust">Caused by pests called \'Hemilia vastarix\'.\n\nIt can be recognized through the upper leaf surface by the pale yellow spots and through the undersides of the leaf by the powdery orange-yellow lesions.\n\nOccurs mainly during the rainy season and when exposed to moisture for a long period.</string>
+    <string name="basinf_cercospora">Caused by pests called \'Cercospora coffeicola\'.\n\nThe most common symptoms are circular spots with tan, grey, or white centers. Lesions are often surrounded by light yellowish \"halo\", which is more visible on the upper leaf surface.\n\nThis usually happens in cooler, wet areas above 600 meters.</string>
+    <string name="basinf_phoma">Caused by pests called \'Phoma costaricensis\'.\n\nThe disease can be recognized from the dark-colored patches that usually start at the leaf edges. Under high humidity, small black spots on the lesions are observed.\n\nOccurs with great severity under conditions of temperature between 16 and 20 degree Celsius, associated with cold winds and fine rains.</string>
+    <string name="cm_healthy">tips</string>
+    <string name="cm_miner">Consider using fungicides such as Thiamethoxam, Chlorantraniliprole, and Cartap hydrochloride.</string>
+    <string name="cm_rust">Consider using fungicides such as \"Copper-containing fungicides\" (Copper oxychloride and Cuprous Oxide).</string>
+    <string name="cm_cercospora">Consider using fungicides such as Kocide fungicides.\n\nMake sure to promote healthy air circulation through pruning plants and remove seed debris afterward. Additionally, make sure to arrange the spacing of the plants properly.</string>
+    <string name="cm_phoma">Using fungicides to control this disease is not recommendable. Instead, crops must be implemented in areas with opposing conditions in favor of the disease. Make sure to avoid shady places and avoid excess nitrogen fertilization.</string>
 </resources>

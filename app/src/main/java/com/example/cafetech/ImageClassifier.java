@@ -1,114 +1,131 @@
 package com.example.cafetech;
 
-import android.app.Activity;
+import android.annotation.SuppressLint;
+import android.content.res.AssetFileDescriptor;
+import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 
-import org.tensorflow.lite.DataType;
-import org.tensorflow.lite.Interpreter;
-import org.tensorflow.lite.support.common.FileUtil;
-import org.tensorflow.lite.support.common.TensorProcessor;
-import org.tensorflow.lite.support.common.ops.NormalizeOp;
-import org.tensorflow.lite.support.image.ImageProcessor;
-import org.tensorflow.lite.support.image.TensorImage;
-import org.tensorflow.lite.support.image.ops.ResizeOp;
-import org.tensorflow.lite.support.image.ops.ResizeWithCropOrPadOp;
-import org.tensorflow.lite.support.image.ops.Rot90Op;
-import org.tensorflow.lite.support.label.TensorLabel;
-import org.tensorflow.lite.support.tensorbuffer.TensorBuffer;
+import androidx.annotation.NonNull;
 
+import org.tensorflow.lite.Interpreter;
+
+import java.io.BufferedReader;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
 import java.nio.MappedByteBuffer;
+import java.nio.channels.FileChannel;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
+import java.util.PriorityQueue;
 
 public class ImageClassifier {
-    private static final float PROBABILITY_MEAN = 0.0f;
-    private static final float PROBABILITY_STD = 255.0f;
-    private static final float IMAGE_MEAN = 0.0f;
-    private static final float IMAGE_STD = 1.0f;
-    private TensorImage inputImageBuffer;
-    private final TensorBuffer probabilityImageBuffer;
-    private final TensorProcessor probabilityProcessor;
-    public List<String> labels;
-    private final Interpreter tensorClassifier;
-    private final int imageResizeX;
-    private final int imageResizeY;
-
-    public ImageClassifier(Activity activity) throws IOException {
-        //loading the model
-        MappedByteBuffer classifierModel = FileUtil.loadMappedFile(activity, "mobilenet_v1_1.0_224_quant.tflite");
-        labels = FileUtil.loadLabels(activity, "labels.txt");
-
-        tensorClassifier = new Interpreter(classifierModel, null);
-
-        //input
-        int imageTensorIndex = 0;
-        int[] inputImageShape = tensorClassifier.getInputTensor(imageTensorIndex).shape();
-        DataType inputDataType = tensorClassifier.getInputTensor(imageTensorIndex).dataType();
-
-        //output
-        int probabilityTensorIndex = 0;
-        int[] outputImageShape = tensorClassifier.getOutputTensor(probabilityTensorIndex).shape();
-        DataType outputDataType = tensorClassifier.getOutputTensor(probabilityTensorIndex).dataType();
-
-        imageResizeX = inputImageShape[1];
-        imageResizeY = inputImageShape[2];
-
-        inputImageBuffer = new TensorImage(inputDataType);
-        probabilityImageBuffer = TensorBuffer.createFixedSize(outputImageShape, outputDataType);
-
-        probabilityProcessor = new TensorProcessor.Builder().add(new NormalizeOp(PROBABILITY_MEAN, PROBABILITY_STD)).build();
+    private Interpreter interpreter;
+    private List<String> labelList;
+    private int INPUT_SIZE;
+    private int PIXEL_SIZE = 3;
+    private int IMAGE_MEAN = 0;
+    private float IMAGE_STD = 255.0f;
+    private float MAX_RESULTS = 3;
+    private float THRESHOLD = 0.4f;
+    ImageClassifier(AssetManager assetManager, String modelPath, String labelPath, int inputSize) throws IOException {
+        INPUT_SIZE = inputSize;
+        Interpreter.Options options = new Interpreter.Options();
+        options.setNumThreads(5);
+        options.setUseNNAPI(true);
+        interpreter = new Interpreter(loadModelFile(assetManager, modelPath), options);
+        labelList = loadLabelList(assetManager, labelPath);
     }
 
-    public List<Recognition> recognizeImage(final Bitmap bitmap, final int sensorOrientation){
-        List<Recognition> recognitions = new ArrayList<>();
-        inputImageBuffer = loadImage(bitmap, sensorOrientation);
-        tensorClassifier.run(inputImageBuffer.getBuffer(), probabilityImageBuffer.getBuffer().rewind());
-        Map<String, Float> labelledProbability = new TensorLabel(labels, probabilityProcessor.process(probabilityImageBuffer)).getMapWithFloatValue();
-        for (Map.Entry<String, Float> entry : labelledProbability.entrySet()){
-            recognitions.add(new Recognition(entry.getKey(), entry.getValue()));
-        }
-        return recognitions;
-    }
+    class Recognition{
+        String id="";
+        String title ="";
+        float confidence = 0F;
 
-    //pre-processing the image (currently altered.. see vid if problems occur)
-    private TensorImage loadImage(Bitmap bitmap, int sensorOrientation) {
-        inputImageBuffer.load(bitmap);
-        int cropSize = Math.min(bitmap.getWidth(), bitmap.getHeight());
-        ImageProcessor imageProcessor = new ImageProcessor.Builder()
-                .add(new ResizeWithCropOrPadOp(cropSize, cropSize))
-                .add(new ResizeOp(imageResizeX, imageResizeY, ResizeOp.ResizeMethod.NEAREST_NEIGHBOR))
-                .add(new Rot90Op(sensorOrientation))
-                .add(new NormalizeOp(IMAGE_MEAN, IMAGE_STD))
-                .build();
-        return imageProcessor.process(inputImageBuffer);
-    }
-
-    static class Recognition implements Comparable {
-        private String name;
-        private final float confidence;
-
-        public Recognition(String name, float confidence) {
-            this.name = name;
+        public Recognition(String i, String s, float confidence){
+            id = i;
+            title = s;
             this.confidence = confidence;
         }
 
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-
-        public float getConfidence() {
-            return confidence;
-        }
-
+        @NonNull
         @Override
-        public int compareTo(Object o) {
-            return Float.compare(((Recognition)o).confidence, this.confidence);
+        public String toString() {return title;}
+    }
+
+    private MappedByteBuffer loadModelFile(AssetManager assetManager, String MODEL_FILE) throws IOException{
+        AssetFileDescriptor fileDescriptor = assetManager.openFd(MODEL_FILE);
+        FileInputStream inputStream = new FileInputStream(fileDescriptor.getFileDescriptor());
+        FileChannel fileChannel = inputStream.getChannel();
+        long startOffset = fileDescriptor.getStartOffset();
+        long declaredLength = fileDescriptor.getDeclaredLength();
+        return fileChannel.map(FileChannel.MapMode.READ_ONLY, startOffset, declaredLength);
+    }
+
+    private List<String> loadLabelList(AssetManager assetManager, String labelPath) throws IOException {
+        List<String> labelList = new ArrayList<>();
+        BufferedReader reader = new BufferedReader(new InputStreamReader(assetManager.open(labelPath)));
+        String line;
+        while ((line = reader.readLine()) != null) {
+            labelList.add(line);
         }
+        reader.close();
+        return labelList;
+    }
+
+
+    public List<Recognition> recognizeImage(Bitmap bitmap) {
+        Bitmap scaledBitmap = Bitmap.createScaledBitmap(bitmap, INPUT_SIZE, INPUT_SIZE, false);
+        ByteBuffer byteBuffer = convertBitmapToByteBuffer(scaledBitmap);
+        float [][]result = new float[1][labelList.size()];
+        interpreter.run(byteBuffer, result);
+        return getSortedResultFloat(result);
+    }
+
+    private ByteBuffer convertBitmapToByteBuffer(Bitmap bitmap){
+        ByteBuffer byteBuffer;
+        byteBuffer = ByteBuffer.allocateDirect(4 * INPUT_SIZE * INPUT_SIZE * PIXEL_SIZE);
+
+        byteBuffer.order(ByteOrder.nativeOrder());
+        int[] intValues = new int[INPUT_SIZE * INPUT_SIZE];
+        bitmap.getPixels(intValues, 0, bitmap.getWidth(), 0, 0, bitmap.getWidth(), bitmap.getHeight());
+        int pixel = 0;
+        for (int i = 0; i < INPUT_SIZE; ++i){
+            for (int j = 0; j < INPUT_SIZE; ++j){
+                final int val = intValues[pixel++];
+
+                byteBuffer.putFloat((((val >> 16) & 0xFF)-IMAGE_MEAN)/IMAGE_STD);
+                byteBuffer.putFloat((((val >> 8) & 0xFF)-IMAGE_MEAN)/IMAGE_STD);
+            }
+        }
+        return byteBuffer;
+    }
+
+    @SuppressLint("DefaultLocale")
+    private List<Recognition> getSortedResultFloat(float[][] labelProbArray){
+
+        PriorityQueue<Recognition> pq =
+                new PriorityQueue<>(
+                        (int) MAX_RESULTS,
+                        (lhs, rhs) -> Float.compare(rhs.confidence, lhs.confidence));
+        for (int i = 0; i < labelList.size(); ++i){
+            float confidence = labelProbArray[0][i];
+            if (confidence > THRESHOLD){
+                pq.add(new Recognition("" + i,
+                labelList.size() > i ? labelList.get(i) : "unknown",
+                confidence));
+            }
+        }
+
+        final ArrayList<Recognition> recognitions = new ArrayList<>();
+        int recognitionSize = (int) Math.min(pq.size(), MAX_RESULTS);
+        for (int i = 0; i < recognitionSize; ++i){
+            recognitions.add(pq.poll());
+        }
+
+        return recognitions;
+
     }
 }

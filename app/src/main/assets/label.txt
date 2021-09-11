@@ -1,0 +1,5 @@
+cercospora
+phoma
+leaf_miner
+leaf_rust
+healthy
