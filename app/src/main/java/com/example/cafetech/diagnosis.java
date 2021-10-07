@@ -57,12 +57,12 @@ public class diagnosis extends AppCompatActivity {
                 cm_prompt.setText(R.string.control_prompt_alt);
                 cm_view.setText(R.string.cm_healthy);
                 break;
-            case "leaf_miner":
+            case "miner":
                 outdiag.setText("Leaf Miners");
                 basinf_view.setText(R.string.basinf_miner);
                 cm_view.setText(R.string.cm_miner);
                 break;
-            case "leaf_rust":
+            case "rust":
                 outdiag.setText("Leaf Rust");
                 basinf_view.setText(R.string.basinf_rust);
                 cm_view.setText(R.string.cm_rust);

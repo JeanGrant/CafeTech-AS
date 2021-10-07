@@ -1,35 +1,38 @@
 package com.example.cafetech;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
-    private final int mInputSize = 224;
     private ImageClassifier imageClassifier;
-    private final String mModelPath = "cafetech.tflite";
-    private final String mLabelPath = "label.txt";
     public FloatingActionButton camerabutt;
-    public ImageView caminp; // to be removed
-    public ListView listview; //to be removed
+    public ImageView caminp; // to be removed; only for debugging
+    public ListView listview; //to be removed; only for debugging
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         camerabutt = findViewById(R.id.camerabutt);
         caminp = findViewById(R.id.AppLogo);
+        listview = findViewById(R.id.probabilities);
 
         //Request for Camera Permission Upon Startup
         /*if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED){
@@ -51,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
 
         //initialize classifier
         try {
-            imageClassifier = new ImageClassifier(getAssets(), mModelPath, mLabelPath, mInputSize);
+            imageClassifier = new ImageClassifier(this);
         } catch (IOException e) {
             Log.e("IMAGE CLASSIFIER ERROR", "ERROR:" + e);
         }
@@ -59,8 +63,8 @@ public class MainActivity extends AppCompatActivity {
         //Actions when button is clicked
         camerabutt.setOnClickListener(view -> {
             //Open Camera
-            //Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-            //startActivityForResult(intent, 100);
+            //Intent opencam = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+            //startActivityForResult(opencam, 100);
 
             //Select Image
             Intent selimg = new Intent();
@@ -81,12 +85,20 @@ public class MainActivity extends AppCompatActivity {
                 InputStream inpIMG_path = getContentResolver().openInputStream(inpIMG_uri);
                 Bitmap inpIMG_bmp = BitmapFactory.decodeStream(inpIMG_path);
 
-                Intent transferdiagnosis = new Intent(MainActivity.this, diagnosis.class);
-                List<ImageClassifier.Recognition> predictions = imageClassifier.recognizeImage(inpIMG_bmp);
-                transferdiagnosis.putExtra("labeldiag", predictions.get(0).toString());
-                transferdiagnosis.putExtra("inputcamera", inpIMG_uri.toString());
+                caminp.setImageBitmap(inpIMG_bmp);
 
-                startActivity(transferdiagnosis);
+                //Intent transferdiagnosis = new Intent(MainActivity.this, diagnosis.class);
+                List<ImageClassifier.Recognition> predictions = imageClassifier.recognizeImage(inpIMG_bmp, 0);
+                final List<String> predictionsList = new ArrayList<>();
+                for(ImageClassifier.Recognition recog : predictions){
+                    predictionsList.add("Label: "+recog.getName()+" Confidence: "+recog.getConfidence());
+                }
+                ArrayAdapter<String> predictionsAdapter = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, predictionsList);
+                listview.setAdapter(predictionsAdapter);
+                //transferdiagnosis.putExtra("labeldiag", predictions.get(0).toString());
+                //transferdiagnosis.putExtra("inputcamera", inpIMG_uri.toString());
+
+                //startActivity(transferdiagnosis);
 
             } catch (FileNotFoundException e) {
                 e.printStackTrace();

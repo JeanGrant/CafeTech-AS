@@ -1,5 +1,5 @@
 cercospora
-phoma
-leaf_miner
-leaf_rust
 healthy
+miner
+phoma
+rust
