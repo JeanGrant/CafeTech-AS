@@ -27,6 +27,7 @@ android {
     }
     buildFeatures {
         mlModelBinding true
+        viewBinding true
     }
 
     aaptOptions{
@@ -46,6 +47,8 @@ dependencies {
     implementation 'org.tensorflow:tensorflow-lite-support:0.1.0'
     implementation 'org.tensorflow:tensorflow-lite-metadata:0.1.0'
     implementation 'org.tensorflow:tensorflow-lite-gpu:2.3.0'
+    implementation 'androidx.navigation:navigation-fragment:2.3.5'
+    implementation 'androidx.navigation:navigation-ui:2.3.5'
     //noinspection GradleDynamicVersion
     testImplementation 'junit:junit:4.+'
     //noinspection GradleDependency
@@ -53,4 +56,6 @@ dependencies {
     //noinspection GradleDependency
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
     implementation 'org.tensorflow:tensorflow-lite:0.0.0-nightly'
+    //cardView
+    implementation "androidx.cardview:cardview:1.0.0"
 }

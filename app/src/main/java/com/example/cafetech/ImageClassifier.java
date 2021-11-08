@@ -2,6 +2,7 @@ package com.example.cafetech;
 
 import android.app.Activity;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 
 import org.tensorflow.lite.DataType;
 import org.tensorflow.lite.Interpreter;
@@ -25,8 +26,8 @@ import java.util.Map;
 
 public class ImageClassifier {
 
-    private static final float PROBABILITY_MEAN = 0.0f;
-    private static final float PROBABILITY_STD = 255.0f;
+    private static final float PROBABILITY_MEAN = 0;
+    private static final float PROBABILITY_STD = 1.0f;
     private static final float IMAGE_STD = 255f;
     private static final int IMAGE_MEAN = 0;
     private static final int MAX_SIZE = 5;
@@ -63,8 +64,10 @@ public class ImageClassifier {
         probabilityProcessor = new TensorProcessor.Builder().add(new NormalizeOp(PROBABILITY_MEAN, PROBABILITY_STD)).build();
     }
 
-    public List<Recognition> recognizeImage(final Bitmap bitmap, final int sensorOrientation) {
+    public List<Recognition> recognizeImage(final byte[] byteArray, final int sensorOrientation) {
         List<Recognition> recognitions = new ArrayList<>();
+
+        Bitmap bitmap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
 
         inputImageBuffer = loadImage(bitmap, sensorOrientation);
         tensorClassifier.run(inputImageBuffer.getBuffer(), probabilityImageBuffer.getBuffer().rewind());
@@ -91,7 +94,6 @@ public class ImageClassifier {
                 .add(new ResizeOp(imageResizeX, imageResizeY, ResizeOp.ResizeMethod.NEAREST_NEIGHBOR))
                 .add(new Rot90Op(noOfRotations))
                 .add(new NormalizeOp(IMAGE_MEAN, IMAGE_STD))
-
                 .build();
         return imageProcessor.process(inputImageBuffer);
     }
@@ -120,7 +122,7 @@ public class ImageClassifier {
 
         @Override
         public String toString() {
-            return name;
+            return name + ' ' + String.format("%.2f", (confidence*100)) + '%';
         }
 
         @Override

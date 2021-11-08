@@ -1,29 +1,35 @@
 <resources>
+    <!--Main-->
     <string name="app_name" translatable="false">CafeTech</string>
+    <!--Homepage Texts-->
     <string name="app_subtitle">Automated Arabica Coffee Leaf Disease Recognition System</string>
     <string name="app_description">CafeTech is a detection system designed to help Arabica coffee growers automatically identify diseases on their crops.\n\nThis system uses Artificial Intelligence (AI) in identifying diseases on a taken image of an Arabica Coffee Leaf. The mobile application then displays basic information and recommendation for control and management of the identified disease.</string>
-    <string name="app_icon" translatable="false">CafeTech Logo</string>
-    <string name="float_camera" translatable="false">Camera Icon</string>
-    <string name="float_home" translatable="false">Home Icon</string>
+    <string name="app_permission">App permissions are required to operate the application. Click the below button to go to settings.</string>
+    <!--Diagnosis Texts-->
     <string name="title_results">Results</string>
-    <string name="diagnosis_prompt">Diagnosis: </string>
-    <string name="diagnosis_prompt_alt" translatable="false">Diagnosis: </string>
+    <string name="diagnosis_prompt">Diagnosis:</string>
     <string name="diagnosis_output">Name</string>
-    <string name="system_input">input image</string>
-    <string name="basic_info_prompt">Cause:</string>
-    <string name="basic_info_prompt_alt">Hey there green thumb farmer!</string>
-    <string name="basic_info_desc">Basic Information</string>
-    <string name="control_prompt">Possible Solutions:</string>
-    <string name="control_prompt_alt">Considerations for maintenance: </string>
-    <string name="control_desc">List of Solutions</string>
-    <string name="basinf_healthy">Keep it going! Your Arabica crop shows no signs of infestation.</string>
-    <string name="basinf_miner">Caused by pests called \'PeriLeucoptera coffeella\'.\n\nIt is recognizable on the upper surface of the infested leaf by the large, irregular brown spots. Interacting with the spot exposes the small white caterpillars under the upper epidermis of the leaf.\n\nThe total life cycle of the pests depends on temperature, relative humidity, and rainfall. Attacks are usually stronger during the dry season than in wet periods.</string>
-    <string name="basinf_rust">Caused by pests called \'Hemilia vastarix\'.\n\nIt can be recognized through the upper leaf surface by the pale yellow spots and through the undersides of the leaf by the powdery orange-yellow lesions.\n\nOccurs mainly during the rainy season and when exposed to moisture for a long period.</string>
-    <string name="basinf_cercospora">Caused by pests called \'Cercospora coffeicola\'.\n\nThe most common symptoms are circular spots with tan, grey, or white centers. Lesions are often surrounded by light yellowish \"halo\", which is more visible on the upper leaf surface.\n\nThis usually happens in cooler, wet areas above 600 meters.</string>
-    <string name="basinf_phoma">Caused by pests called \'Phoma costaricensis\'.\n\nThe disease can be recognized from the dark-colored patches that usually start at the leaf edges. Under high humidity, small black spots on the lesions are observed.\n\nOccurs with great severity under conditions of temperature between 16 and 20 degree Celsius, associated with cold winds and fine rains.</string>
-    <string name="cm_healthy">tips</string>
-    <string name="cm_miner">Consider using fungicides such as Thiamethoxam, Chlorantraniliprole, and Cartap hydrochloride.</string>
-    <string name="cm_rust">Consider using fungicides such as \"Copper-containing fungicides\" (Copper oxychloride and Cuprous Oxide).</string>
-    <string name="cm_cercospora">Consider using fungicides such as Kocide fungicides.\n\nMake sure to promote healthy air circulation through pruning plants and remove seed debris afterward. Additionally, make sure to arrange the spacing of the plants properly.</string>
-    <string name="cm_phoma">Using fungicides to control this disease is not recommendable. Instead, crops must be implemented in areas with opposing conditions in favor of the disease. Make sure to avoid shady places and avoid excess nitrogen fertilization.</string>
+    <string name="basinf_healthy">Your Arabica crop shows no sign of infestation.</string>
+    <string name="basinf_miner"><b>Cause:</b>\nCaused by pests called <i>\‘PeriLeucoptera coffeella\’</i>. The total life cycle of the pests depends on temperature, relative humidity, and rainfall. Attacks are usually stronger during the dry season than in wet periods.\n\n<b>Symptom:</b>\nLarge, Irregular Brown Spots on the upper surface of the infested leaf. Interacting with the spot exposes the small white caterpillars under the upper epidermis of the leaf.\n\n<b>Effects:</b>\n The mines made by the pathogens cause lower photosynthetic rate of the plants consequent depletion of the plant and productivity diminish. It also causes defoliation that leads to the death of the plant\n\n<b>Recommendation:</b>\nConsider using fungicides such as Thiamethoxam, Chlorantraniliprole, and Cartap hydrochloride.</string>
+    <string name="basinf_rust"><b>Cause:</b>\nCaused by fungus called <i>\‘Hemilia vastarix\’</i>. Occurs mainly during the rainy season and when exposed to moisture for a long period.\n\n<b>Symptom:</b>\nPale yellow spots on the upper leaf surface and powdery orange-yellow lesions on the undersides of the leaf.\n\n<b>Effects:</b>\nInfection causes leaf fall, and affects the growth of new stems that bears the crops. It causes the berries to ripen prematurely, resulting in beans of poor quality.\n\n<b>Recommendation:</b>\nConsider using Copper-containing fungicides such as copper oxychloride and cuprous oxide. Organic fungicides such as triadimefon may also be used.</string>
+    <string name="basinf_cercospora"><b>Cause:</b>\nCaused by pathogens called <i>\‘Cercospora coffeicola\’</i>. Weather conditions are important for this pathogens to thrive: high humidity, rain, warm temperatures and drought stress after.\n\n<b>Symptom:</b>\nCircular spots with tan, grey or white centers. Lesions are often surrounded by a light yellowish halo.\n\n<b>Effects:</b>\nCauses defoliation of seedlings and plants. Diseased fruit ripens and falls prematurely.\n\n<b>Recommendation:</b>\nConsider using Kocide fungicides. Further, make sure to practice adequate fertilization by spacing the plants properly, promoting healthy air circulation through pruning plants, and removing seed debris after pruning.</string>
+    <string name="basinf_phoma"><b>Cause:</b>\nCaused by pathogens called <i>\‘Phoma costarricensis\’</i>. Occurs with great severity under conditions of temperature between 16 and 20 degree celsius, associated with cold winds and fine rains.\n\n<b>Symptom:</b>\nDark-colored patches that usually start at the leaf edges. Under high humidity, small black spots on the lesions are observed.\n\n<b>Effects:</b>\nDefoliation and death of seedlings.\n\n<b>Recommendation:</b>\nFungicides are not recommendable for controlling this disease. Instead, crops must be implemented in areas with opposing conditions in favor of the disease. Further, avoid shady places and excess nitrogen fertilization.</string>
+    <!--Reminders Texts-->
+    <string name="guide_title">Reminders:</string>
+    <string name="guide_1">Make sure that the symptom is the only focus of the image.</string>
+    <string name="guide_2">Make sure that the corners or background of the image is either a leaf or a soil.</string>
+    <string name="prefer_prompt">Preferred</string>
+    <string name="avoid_prompt">Avoid</string>
+    <string name="open_cam" translatable="false">Take a photo</string>
+    <string name="upload_img" translatable="false">Upload image</string>
+    <!--Help Texts-->
+    <string name="title_help">Help Desk</string>
+    <string name="help_1_main">Reminders when taking an image</string>
+    <string name="proceeedbtn">proceeedBTN</string>
+    <string name="backbtn">backBTN</string>
+    <string name="other_guide">Make sure that the image has a width-to-height ratio of 1:1.\n\nMake sure that the symptom can be clearly seen from the taken image.</string>
+    <string name="help_2_main">How does this system work?</string>
+    <string name="AImgClass">The Artificial Intelligence, specifically the Convolutional Neural Network called \"Inception-V3\", that is integrated within this system is developed by \"exposing\" the AI to multiple varying images of Arabica coffee leaf diseases. Just like how a human being can tell objects apart from each other through identifying each of their characteristics, the AI is programmed to identify the underlying patterns within each disease through the images that it is \"exposed\" to. Through this, the AI can classify the disease of a given input image based on its resemblance to the images that it has learnt from.\n\n<b>What can be taken from this statement?</b>\nThe resemblance of the input image is an important factor for the AI to classify the disease correctly. Luckily, each disease (though indistinguishable from one another through a simple observation) have a set of characteristics or pattern that the AI is able to identify. Thus, it is also important that the recommendation stated in the \"Reminders when taking an image\" is observed by the user to ensure that the input image is as close as possible to the reference images.</string>
+    <string name="help_3_main">Limitations of this system</string>
+    <string name="limitations">This system is designed to classify the following <b>Arabica coffee leaf diseases:</b> <i>Leaf Rust, Cercospora Leaf Rust, Phoma Leaf Rust, and Leaf Miner.</i>\n\nThere are other diseases that an Arabica crop may be exposed to, however, these diseases are either rare in the Philippines or has symptoms that occur on other parts of an Arabica crop instead of its leaves. Thus, these diseases are not included in the scope of the system. In cases where the system is used outside its scope, the system will still generate a result.\n\n<b>Hence, it is important that the user must take note of the said limitations.</b></string>
 </resources>

@@ -10,8 +10,6 @@
     <string name="basic_info_desc">Deskripsyon ng sanhi</string>
     <string name="control_prompt">Mga Maaring Solusyon:</string>
     <string name="control_desc">Listahan ng Solusyon</string>
-    <string name="basic_info_prompt_alt">Mabuhay!</string>
-    <string name="control_prompt_alt">Mga Mungkahi sa Pagpapanatili ng Mabuting Kalusugan nang mga Tanim na Arabica:</string>
     <string name="basinf_healthy">Ang iyong tanim na arabica ay walang ipinapakitang implikasyon ng inpestasyon.</string>
     <string name="basinf_miner">Ito ay epekto ng pesteng \'PeriLeucoptera coffeella\'.\n\nIto ay maaaring makita sa itaas na bahagi ng apektadong dahon. Ang dahong apektado ay nagpapakita ng mga irregular na mga kayumangging dungis. Kapag hinawakan ang mga dungis, maaaring makita ang mga maliliit na puting uod na nakapaloob sa bahaging itaas ng balat ng dahon. \n\nAng buhay ng mga peste ay tumatagal depende sa temperatura, halumigmig, at ulan.</string>
     <string name="basinf_rust">"Ang amag na 'Hemileia vastatrix' ang sanhi ng sakit na Coffee Leaf Rust. \n\nMaaari itong makilala sa bahagin itaas ng dahon sa pamamagitan ng mapuputing dilaw na mga dungis. Maari din itong mapansin sa ibabang bahagi ng dahon sa pamamagitan ng mapulbos na kahel na mga sugat.\n\nAng amag na ito ay kadalasang lumalabas sa basang dahon tuwing tagulan. "</string>
@@ -22,4 +20,11 @@
     <string name="cm_rust">Ikonsidera ang paggamit ng mga fungicides kagaya nang mga fungicides na may Copper (Copper oxychloride and Cuprous Oxide).</string>
     <string name="cm_cercospora">Ikonsidera ang paggamit ng fungicides kagaya nang Kocide fungicides.\n\nSiguraduhin na mayroong maayos na sirkulasyon ng hangin sa pamamagitan ng pagkapon ng mga halaman at paglilinis ng mga labi ng binhi. Siguraduhin din na maayos ang pagkakalugar ng mga tanim.</string>
     <string name="cm_phoma">Ang paggamit ng mga fungicides upang kontrolin ang higit na pagkalat ng inpestasyon ay hindi iniririkomenda. Sa halip, siguraduhin na ang mga halaman ay nakatanim sa lugar na hindi madilim at iwasan ang sobrang paggamit ng mga patabang may Nitrogen.</string>
+    <string name="rec_prompt">Rekomendasyon:</string>
+    <string name="guide_title">Mga Paalala:</string>
+    <string name="guide_1">Siguraduhin na nasa simtomas ang pokus ng camera.</string>
+    <string name="guide_2">Siguraduhin na ang paligid o background ng litrato ay maalin lamang sa dahon o lupa.</string>
+    <string name="prefer_prompt">Inirerekomenda</string>
+    <string name="avoid_prompt">Iwasan</string>
+    <string name="app_permission">Kailangan ng permiso bago gamitin ang aplikasyon. Pindutin ang button upang pumunta sa settings.</string>
 </resources>

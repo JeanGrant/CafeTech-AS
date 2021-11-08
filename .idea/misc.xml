@@ -3,7 +3,32 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/dell02/AndroidStudioProjects/As2/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/dell02/AndroidStudioProjects/As2/app/src/main/res/drawable/app_logo_bgrad.xml" value="0.11145833333333334" />
+        <entry key="..\:/Users/dell02/AndroidStudioProjects/As2/app/src/main/res/drawable/app_logo_simplified_1.xml" value="0.11145833333333334" />
+        <entry key="..\:/Users/dell02/AndroidStudioProjects/As2/app/src/main/res/drawable/ic_baseline_arrow_back_24.xml" value="0.21614583333333334" />
+        <entry key="..\:/Users/dell02/AndroidStudioProjects/As2/app/src/main/res/drawable/ic_baseline_arrow_back_24_black.xml" value="0.21614583333333334" />
+        <entry key="..\:/Users/dell02/AndroidStudioProjects/As2/app/src/main/res/drawable/ic_baseline_help_outline_24.xml" value="0.21614583333333334" />
+        <entry key="..\:/Users/dell02/AndroidStudioProjects/As2/app/src/main/res/drawable/ic_baseline_power_settings_new_24.xml" value="0.21614583333333334" />
+        <entry key="..\:/Users/dell02/AndroidStudioProjects/As2/app/src/main/res/drawable/ic_cafetech_logo_main.xml" value="0.21614583333333334" />
+        <entry key="..\:/Users/dell02/AndroidStudioProjects/As2/app/src/main/res/drawable/ic_camera_button_white_01.xml" value="0.21614583333333334" />
+        <entry key="..\:/Users/dell02/AndroidStudioProjects/As2/app/src/main/res/drawable/ic_icons_01.xml" value="0.10989583333333333" />
+        <entry key="..\:/Users/dell02/AndroidStudioProjects/As2/app/src/main/res/drawable/ic_icons_02.xml" value="0.10989583333333333" />
+        <entry key="..\:/Users/dell02/AndroidStudioProjects/As2/app/src/main/res/drawable/ic_launcher_background.xml" value="0.10989583333333333" />
+        <entry key="..\:/Users/dell02/AndroidStudioProjects/As2/app/src/main/res/drawable/rounded_rectangle_1_a.xml" value="0.21614583333333334" />
+        <entry key="..\:/Users/dell02/AndroidStudioProjects/As2/app/src/main/res/drawable/rounded_rectangle_1_b.xml" value="0.21614583333333334" />
+        <entry key="..\:/Users/dell02/AndroidStudioProjects/As2/app/src/main/res/layout-long/activity_main.xml" value="0.5" />
+        <entry key="..\:/Users/dell02/AndroidStudioProjects/As2/app/src/main/res/layout-notlong/activity_main.xml" value="0.2" />
+        <entry key="..\:/Users/dell02/AndroidStudioProjects/As2/app/src/main/res/layout/activity_diagnosis.xml" value="0.1" />
+        <entry key="..\:/Users/dell02/AndroidStudioProjects/As2/app/src/main/res/layout/activity_help.xml" value="0.3352380952380952" />
+        <entry key="..\:/Users/dell02/AndroidStudioProjects/As2/app/src/main/res/layout/activity_main.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/dell02/AndroidStudioProjects/As2/app/src/main/res/layout/activity_pre_input.xml" value="0.22" />
+        <entry key="..\:/Users/dell02/AndroidStudioProjects/As2/app/src/main/res/layout/activity_reminders.xml" value="0.4466666666666667" />
+        <entry key="..\:/Users/dell02/AndroidStudioProjects/As2/app/src/main/res/layout/content_help.xml" value="0.2" />
+        <entry key="..\:/Users/dell02/AndroidStudioProjects/As2/app/src/main/res/mipmap-anydpi-v26/ic_app_inp_healthy.xml" value="0.10989583333333333" />
+        <entry key="..\:/Users/dell02/AndroidStudioProjects/As2/app/src/main/res/mipmap-anydpi-v26/ic_app_inp_healthy_round.xml" value="0.10989583333333333" />
+        <entry key="..\:/Users/dell02/AndroidStudioProjects/As2/app/src/main/res/mipmap-anydpi-v26/ic_app_logo_alt.xml" value="0.10989583333333333" />
+        <entry key="..\:/Users/dell02/AndroidStudioProjects/As2/app/src/main/res/mipmap-anydpi-v26/ic_app_logo_round.xml" value="0.10989583333333333" />
+        <entry key="..\:/Users/dell02/AndroidStudioProjects/As2/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.10989583333333333" />
         <entry key="..\:/Users/dell02/AndroidStudioProjects/CafeTech-AS/app/src/main/res/layout/activity_diagnosis.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/dell02/AndroidStudioProjects/CafeTech-AS/app/src/main/res/layout/activity_main.xml" value="0.4466666666666667" />
         <entry key="..\:/Users/dell02/AndroidStudioProjects/CafeTech/app/src/main/res/drawable/ic_icons_02.xml" value="0.19583333333333333" />
@@ -22,7 +47,7 @@
   <component name="VisualizationToolProject">
     <option name="state">
       <ProjectState>
-        <option name="scale" value="0.22" />
+        <option name="scale" value="0.4466666666666667" />
       </ProjectState>
     </option>
   </component>
