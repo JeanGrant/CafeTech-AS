@@ -15,7 +15,7 @@
         android:fontFamily="@font/aguafina_script"
         android:text="@string/app_name"
         android:textAlignment="center"
-        android:textColor="@color/black"
+        android:textColor="@color/green_cafetech"
         android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -39,51 +39,95 @@
 
     <TextView
         android:id="@+id/AppDescription"
-        android:layout_width="354dp"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="30dp"
         android:contentDescription="@string/app_name"
         android:fontFamily="@font/questrial"
         android:text="@string/app_description"
         android:textAlignment="center"
-        android:textColor="@color/green_cafetech"
-        android:textSize="15sp"
+        android:textColor="@color/black"
+        android:textSize="13sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/AppSubtitle" />
+
+    <TextView
+        android:id="@+id/permission_error"
+        android:layout_width="330dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:contentDescription="@string/app_name"
+        android:fontFamily="@font/questrial"
+        android:text="@string/app_permission"
+        android:textAlignment="center"
+        android:textColor="@color/design_default_color_error"
+        android:textSize="13sp"
+        app:layout_constraintBottom_toTopOf="@+id/proceedbutt"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        android:visibility="gone"/>
 
     <ImageView
         android:id="@+id/AppLogo"
         android:layout_width="125dp"
         android:layout_height="125dp"
-        android:layout_marginTop="76dp"
-        android:contentDescription="@string/app_icon"
+        android:layout_marginTop="92dp"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/app_name"
+        android:cropToPadding="false"
+        android:scaleType="fitCenter"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@mipmap/ic_app_logo_alt" />
+        app:srcCompat="@drawable/ic_cafetech_logo_main" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/camerabutt"
+        android:id="@+id/proceedbutt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp"
-        android:backgroundTint="@color/brown_cafetech"
+        android:backgroundTint="@color/green_cafetech"
         android:clickable="true"
-        android:contentDescription="@string/float_camera"
+        android:contentDescription="@string/proceeedbtn"
+        app:tint="@null"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/ic_icons_01" />
+        app:srcCompat="@drawable/ic_camera_button_white_01" />
 
-    <ListView
-        android:id="@+id/probabilities"
+    <Button
+        android:id="@+id/exitApp"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/camerabutt"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/AppDescription" />
+        android:layout_height="30dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/rounded_rectangle_1_a"
+        android:clickable="true"
+        android:paddingStart="33dp"
+        android:paddingEnd="20dp"
+        app:backgroundTint="@color/black"
+        app:icon="@drawable/ic_baseline_power_settings_new_24"
+        app:layout_constraintBottom_toBottomOf="@+id/proceedbutt"
+        app:layout_constraintEnd_toStartOf="@+id/proceedbutt"
+        app:layout_constraintTop_toTopOf="@+id/proceedbutt"
+        app:srcCompat="@drawable/ic_baseline_power_settings_new_24"
+        app:tint="@null" />
+
+    <Button
+        android:id="@+id/helpBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginStart="8dp"
+        android:background="@drawable/rounded_rectangle_1_b"
+        android:clickable="true"
+        android:paddingStart="33dp"
+        android:paddingEnd="20dp"
+        app:backgroundTint="@color/black"
+        app:icon="@drawable/ic_baseline_help_outline_24"
+        app:layout_constraintBottom_toBottomOf="@+id/proceedbutt"
+        app:layout_constraintStart_toEndOf="@+id/proceedbutt"
+        app:layout_constraintTop_toTopOf="@+id/proceedbutt"
+        app:tint="@null" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
