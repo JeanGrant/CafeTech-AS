@@ -19,13 +19,13 @@
         android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/AppLogo" />
+        app:layout_constraintTop_toBottomOf="@+id/AppLogo"/>
 
     <TextView
         android:id="@+id/AppSubtitle"
-        android:layout_width="217dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="8dp"
         android:contentDescription="@string/app_name"
         android:fontFamily="@font/fira_sans"
         android:text="@string/app_subtitle"
@@ -39,7 +39,7 @@
 
     <TextView
         android:id="@+id/AppDescription"
-        android:layout_width="300dp"
+        android:layout_width="320dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:contentDescription="@string/app_name"
@@ -63,7 +63,7 @@
         android:textAlignment="center"
         android:textColor="@color/design_default_color_error"
         android:textSize="13sp"
-        app:layout_constraintBottom_toTopOf="@+id/proceedbutt"
+        app:layout_constraintBottom_toTopOf="@+id/camBTN"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -73,7 +73,7 @@
         android:id="@+id/AppLogo"
         android:layout_width="125dp"
         android:layout_height="125dp"
-        android:layout_marginTop="92dp"
+        android:layout_marginTop="70dp"
         android:adjustViewBounds="true"
         android:contentDescription="@string/app_name"
         android:cropToPadding="false"
@@ -84,21 +84,27 @@
         app:srcCompat="@drawable/ic_cafetech_logo_main" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/proceedbutt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
+        android:id="@+id/camBTN"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="50dp"
+        android:adjustViewBounds="true"
         android:backgroundTint="@color/green_cafetech"
         android:clickable="true"
         android:contentDescription="@string/proceeedbtn"
-        app:tint="@null"
+        android:padding="0dp"
+        android:scaleType="center"
+        android:src="@drawable/ic_camera_button_white_01"
+        app:fabSize="auto"
+        app:fabCustomSize="60dp"
+        app:maxImageSize="32.5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/ic_camera_button_white_01" />
+        app:tint="@null" />
 
     <Button
-        android:id="@+id/exitApp"
+        android:id="@+id/exitBTN"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
         android:layout_marginEnd="8dp"
@@ -108,14 +114,14 @@
         android:paddingEnd="20dp"
         app:backgroundTint="@color/black"
         app:icon="@drawable/ic_baseline_power_settings_new_24"
-        app:layout_constraintBottom_toBottomOf="@+id/proceedbutt"
-        app:layout_constraintEnd_toStartOf="@+id/proceedbutt"
-        app:layout_constraintTop_toTopOf="@+id/proceedbutt"
+        app:layout_constraintBottom_toBottomOf="@+id/camBTN"
+        app:layout_constraintEnd_toStartOf="@+id/camBTN"
+        app:layout_constraintTop_toTopOf="@+id/camBTN"
         app:srcCompat="@drawable/ic_baseline_power_settings_new_24"
         app:tint="@null" />
 
     <Button
-        android:id="@+id/helpBtn"
+        android:id="@+id/helpBTN"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
         android:layout_marginStart="8dp"
@@ -125,9 +131,9 @@
         android:paddingEnd="20dp"
         app:backgroundTint="@color/black"
         app:icon="@drawable/ic_baseline_help_outline_24"
-        app:layout_constraintBottom_toBottomOf="@+id/proceedbutt"
-        app:layout_constraintStart_toEndOf="@+id/proceedbutt"
-        app:layout_constraintTop_toTopOf="@+id/proceedbutt"
+        app:layout_constraintBottom_toBottomOf="@+id/camBTN"
+        app:layout_constraintStart_toEndOf="@+id/camBTN"
+        app:layout_constraintTop_toTopOf="@+id/camBTN"
         app:tint="@null" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

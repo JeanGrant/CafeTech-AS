@@ -4,41 +4,44 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/backhome"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="35dp"
-        android:layout_marginTop="35dp"
-        android:backgroundTint="@color/black"
+    <Button
+        android:id="@+id/backBTN"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/app_logo_bgrad"
         android:clickable="true"
-        android:contentDescription="back button"
-        android:src="?attr/actionModeCloseDrawable"
+        android:paddingStart="4dp"
+        android:paddingEnd="4dp"
+        app:icon="@drawable/ic_baseline_arrow_back_24"
+        app:iconSize="30dp"
+        app:iconTint="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:tint="@color/white" />
+        app:tint="@color/black" />
 
     <TextView
         android:id="@+id/guide_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:contentDescription="Reminders Title"
         android:fontFamily="@font/fira_sans"
         android:text="@string/guide_title"
         android:textAllCaps="false"
         android:textColor="@color/green_cafetech"
+        android:textSize="14sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/backhome"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/backhome"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@+id/backBTN" />
 
     <TextView
         android:id="@+id/guide_1"
-        android:layout_width="300dp"
+        android:layout_width="320dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="22dp"
+        android:layout_marginTop="30dp"
         android:contentDescription="Reminder 1"
         android:fontFamily="@font/questrial"
         android:text="@string/guide_1"
@@ -50,9 +53,9 @@
 
     <TextView
         android:id="@+id/guide_2"
-        android:layout_width="300dp"
+        android:layout_width="320dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="32dp"
         android:contentDescription="Reminder 2"
         android:fontFamily="@font/questrial"
         android:text="@string/guide_2"
@@ -95,10 +98,9 @@
         app:layout_constraintTop_toBottomOf="@+id/cor_bg_img" />
 
     <TextView
-        android:id="@+id/wro_focus_prompt"
+        android:id="@+id/g1s2_TxtView"
         android:layout_width="40dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="0dp"
         android:contentDescription="Reminder 1 Avoid"
         android:fontFamily="@font/questrial"
         android:text="@string/avoid_prompt"
@@ -111,10 +113,9 @@
         app:layout_constraintTop_toBottomOf="@+id/wro_focus_img" />
 
     <TextView
-        android:id="@+id/wro_bg_prompt"
+        android:id="@+id/g2s2_TxtView"
         android:layout_width="40dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="0dp"
         android:contentDescription="Reminder 2 Avoid"
         android:fontFamily="@font/questrial"
         android:text="@string/avoid_prompt"

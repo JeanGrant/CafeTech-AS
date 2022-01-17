@@ -1,5 +1,6 @@
 package com.example.cafetech;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.transition.AutoTransition;
 import android.transition.TransitionManager;
@@ -31,20 +32,24 @@ public class help extends AppCompatActivity {
         arrow1 = findViewById(R.id.arrow_button_1);
         hiddenView1 = findViewById(R.id.hidden_view_1);
 
-        arrow1.setOnClickListener(view -> {
+        cardView1.setOnClickListener(view -> {
             if (hiddenView1.getVisibility() == View.VISIBLE) {
                 TransitionManager.beginDelayedTransition(cardView2,
                         new AutoTransition());
+                TransitionManager.beginDelayedTransition(cardView3,
+                        new AutoTransition());
                 hiddenView1.setVisibility(View.GONE);
-//                    arrow(R.drawable.ic_baseline_expand_more_24);
+                arrow1.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_baseline_expand_more_24,0,0,0);
             }
             else {
                 TransitionManager.beginDelayedTransition(cardView1,
                         new AutoTransition());
                 TransitionManager.beginDelayedTransition(cardView2,
                         new AutoTransition());
+                TransitionManager.beginDelayedTransition(cardView3,
+                        new AutoTransition());
                 hiddenView1.setVisibility(View.VISIBLE);
-//                    arrow.setCompoundDrawables(R.drawable.ic_baseline_expand_less_24);
+                arrow1.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_baseline_expand_less_24,0,0,0);
             }
         });
 
@@ -52,17 +57,50 @@ public class help extends AppCompatActivity {
         arrow2 = findViewById(R.id.arrow_button_2);
         hiddenView2 = findViewById(R.id.hidden_view_2);
 
-        arrow2.setOnClickListener(view -> {
+        cardView2.setOnClickListener(view -> {
             if (hiddenView2.getVisibility() == View.VISIBLE) {
+                TransitionManager.beginDelayedTransition(cardView3,
+                        new AutoTransition());
                 hiddenView2.setVisibility(View.GONE);
-//                    arrow(R.drawable.ic_baseline_expand_more_24);
+                arrow2.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_baseline_expand_more_24,0,0,0);
             }
             else {
                 TransitionManager.beginDelayedTransition(cardView2,
                         new AutoTransition());
+                TransitionManager.beginDelayedTransition(cardView3,
+                        new AutoTransition());
                 hiddenView2.setVisibility(View.VISIBLE);
-//                    arrow.setCompoundDrawables(R.drawable.ic_baseline_expand_less_24);
+                arrow2.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_baseline_expand_less_24,0,0,0);
             }
         });
+
+        cardView3 = findViewById(R.id.base_cardview_3);
+        arrow3 = findViewById(R.id.arrow_button_3);
+        hiddenView3 = findViewById(R.id.hidden_view_3);
+
+        cardView3.setOnClickListener(view -> {
+            if (hiddenView3.getVisibility() == View.VISIBLE) {
+                hiddenView3.setVisibility(View.GONE);
+                arrow3.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_baseline_expand_more_24,0,0,0);
+            }
+            else {
+                TransitionManager.beginDelayedTransition(cardView3,
+                        new AutoTransition());
+                hiddenView3.setVisibility(View.VISIBLE);
+                arrow3.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_baseline_expand_less_24,0,0,0);
+            }
+        });
+
+        // Going backBTN
+        Button backhome = findViewById(R.id.backBTN);
+
+        backhome.setOnClickListener(view -> {
+            finish();
+        });
+    }
+
+    @Override
+    public void onBackPressed() {
+        finish();
     }
 }

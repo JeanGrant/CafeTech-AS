@@ -24,13 +24,13 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
+@SuppressWarnings("ALL")
 public class ImageClassifier {
 
-    private static final float PROBABILITY_MEAN = 0;
+    private static final float PROBABILITY_MEAN = 0f;
     private static final float PROBABILITY_STD = 1.0f;
-    private static final float IMAGE_STD = 255f;
-    private static final int IMAGE_MEAN = 0;
-    private static final int MAX_SIZE = 5;
+    private static final float IMAGE_STD =  255.0f;
+    private static final float IMAGE_MEAN = 0f;
     private final int imageResizeX;
     private final int imageResizeY;
     private final List<String> labels;
@@ -41,10 +41,10 @@ public class ImageClassifier {
 
     public ImageClassifier(Activity activity) throws IOException {
 
-        MappedByteBuffer classifierModel = FileUtil.loadMappedFile(activity, "inception_quant.tflite");
-        labels = FileUtil.loadLabels(activity, "label.txt");
-
+        //initialize classifier and labels
+        MappedByteBuffer classifierModel = FileUtil.loadMappedFile(activity, "inception_quant Whole and Crop.tflite");
         tensorClassifier = new Interpreter(classifierModel, null);
+        labels = FileUtil.loadLabels(activity, "label.txt");
 
         int imageTensorIndex = 0;
         int probabilityTensorIndex = 0;
@@ -81,8 +81,7 @@ public class ImageClassifier {
 
         //sort predictions based on confidence
         Collections.sort(recognitions);
-        //return top 5 predictions
-        return recognitions.subList(0, MAX_SIZE);
+        return recognitions;
     }
 
     private TensorImage loadImage(Bitmap bitmap, int sensorOrientation) {
@@ -90,11 +89,12 @@ public class ImageClassifier {
         int noOfRotations = sensorOrientation / 90;
         int cropSize = Math.min(bitmap.getWidth(), bitmap.getHeight());
         ImageProcessor imageProcessor = new ImageProcessor.Builder()
-                .add(new ResizeWithCropOrPadOp(cropSize, cropSize))
+                .add(new ResizeWithCropOrPadOp(cropSize,cropSize))
                 .add(new ResizeOp(imageResizeX, imageResizeY, ResizeOp.ResizeMethod.NEAREST_NEIGHBOR))
                 .add(new Rot90Op(noOfRotations))
                 .add(new NormalizeOp(IMAGE_MEAN, IMAGE_STD))
                 .build();
+
         return imageProcessor.process(inputImageBuffer);
     }
 
@@ -107,22 +107,9 @@ public class ImageClassifier {
             this.confidence = confidence;
         }
 
-        public String getName(){
-            return name;
-        }
-        public void setName(String name){
-            this.name = name;
-        }
-        public float getConfidence(){
-            return confidence;
-        }
-        public void setConfidence(float confidence){
-            this.confidence = confidence;
-        }
-
         @Override
         public String toString() {
-            return name + ' ' + String.format("%.2f", (confidence*100)) + '%';
+            return name;
         }
 
         @Override

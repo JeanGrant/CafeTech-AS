@@ -6,24 +6,28 @@
     android:layout_height="match_parent"
     tools:context=".diagnosis">
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/backhome"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="35dp"
-        android:layout_marginTop="35dp"
-        android:backgroundTint="@color/black"
+    <Button
+        android:id="@+id/backBTN"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/app_logo_bgrad"
         android:clickable="true"
-        android:contentDescription="@string/backbtn"
-        android:src="?attr/actionModeCloseDrawable"
+        android:paddingStart="4dp"
+        android:paddingEnd="4dp"
+        app:icon="@drawable/ic_baseline_arrow_back_24"
+        app:iconSize="30dp"
+        app:iconTint="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:tint="@color/white" />
+        app:tint="@color/black" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/title_TxtView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:contentDescription="@string/title_results"
         android:fontFamily="@font/fira_sans"
         android:text="@string/title_results"
@@ -31,27 +35,25 @@
         android:textColor="@color/green_cafetech"
         android:textSize="14sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/backhome"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/backhome"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@+id/backBTN" />
 
     <ImageView
-        android:id="@+id/inpcamdisplay"
+        android:id="@+id/inp_ImgView"
         android:layout_width="125dp"
         android:layout_height="125dp"
         android:layout_marginTop="28dp"
         android:contentDescription="@string/upload_img"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/title_TxtView"
         tools:srcCompat="@mipmap/ic_app_logo_alt" />
 
     <TextView
-        android:id="@+id/textView2"
-        android:layout_width="73dp"
-        android:layout_height="17dp"
+        android:id="@+id/prompt1_TxtView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:contentDescription="@string/diagnosis_prompt"
         android:fontFamily="@font/questrial"
@@ -62,10 +64,10 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inpcamdisplay" />
+        app:layout_constraintTop_toBottomOf="@+id/inp_ImgView" />
 
     <TextView
-        android:id="@+id/diagout"
+        android:id="@+id/label_TxtView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -77,37 +79,49 @@
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/prompt1_TxtView" />
 
     <TextView
-        android:id="@+id/basinfdesc"
-        android:layout_width="326dp"
+        android:id="@+id/info_TxtView"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
-        android:maxLines="12"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="24dp"
+        android:fadeScrollbars="false"
+        android:maxLines="14"
         android:scrollbars="vertical"
         android:text="@string/basinf_healthy"
+        app:layout_constraintBottom_toTopOf="@+id/camBTN"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/diagout" />
+        app:layout_constraintTop_toBottomOf="@+id/label_TxtView"
+        app:layout_constraintVertical_bias="0.0" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/proceedbutt"
+        android:id="@+id/camBTN"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="50dp"
         android:backgroundTint="@color/green_cafetech"
         android:clickable="true"
         android:contentDescription="@string/proceeedbtn"
-        app:tint="@null"
+        android:padding="0dp"
+        android:scaleType="center"
+        android:src="@drawable/ic_camera_button_white_01"
+        app:fabSize="auto"
+        app:fabCustomSize="60dp"
+        app:maxImageSize="32.5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/ic_camera_button_white_01" />
+        app:srcCompat="@drawable/ic_camera_button_white_01"
+        app:tint="@null" />
 
     <Button
-        android:id="@+id/exitApp"
+        android:id="@+id/exitBTN"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
         android:layout_marginEnd="8dp"
@@ -117,14 +131,14 @@
         android:paddingEnd="20dp"
         app:backgroundTint="@color/black"
         app:icon="@drawable/ic_baseline_power_settings_new_24"
-        app:layout_constraintBottom_toBottomOf="@+id/proceedbutt"
-        app:layout_constraintEnd_toStartOf="@+id/proceedbutt"
-        app:layout_constraintTop_toTopOf="@+id/proceedbutt"
+        app:layout_constraintBottom_toBottomOf="@+id/camBTN"
+        app:layout_constraintEnd_toStartOf="@+id/camBTN"
+        app:layout_constraintTop_toTopOf="@+id/camBTN"
         app:srcCompat="@drawable/ic_baseline_power_settings_new_24"
         app:tint="@null" />
 
     <Button
-        android:id="@+id/helpBtn"
+        android:id="@+id/helpBTN"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
         android:layout_marginStart="8dp"
@@ -134,9 +148,9 @@
         android:paddingEnd="20dp"
         app:backgroundTint="@color/black"
         app:icon="@drawable/ic_baseline_help_outline_24"
-        app:layout_constraintBottom_toBottomOf="@+id/proceedbutt"
-        app:layout_constraintStart_toEndOf="@+id/proceedbutt"
-        app:layout_constraintTop_toTopOf="@+id/proceedbutt"
+        app:layout_constraintBottom_toBottomOf="@+id/camBTN"
+        app:layout_constraintStart_toEndOf="@+id/camBTN"
+        app:layout_constraintTop_toTopOf="@+id/camBTN"
         app:srcCompat="@drawable/ic_baseline_power_settings_new_24"
         app:tint="@null" />
 
