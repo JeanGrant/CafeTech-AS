@@ -42,7 +42,7 @@ public class ImageClassifier {
     public ImageClassifier(Activity activity) throws IOException {
 
         //initialize classifier and labels
-        MappedByteBuffer classifierModel = FileUtil.loadMappedFile(activity, "inception_quant Whole and Crop.tflite");
+        MappedByteBuffer classifierModel = FileUtil.loadMappedFile(activity, "inception_quant.tflite");
         tensorClassifier = new Interpreter(classifierModel, null);
         labels = FileUtil.loadLabels(activity, "label.txt");
 
